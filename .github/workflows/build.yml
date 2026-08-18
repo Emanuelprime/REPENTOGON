@@ -9,7 +9,9 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
+    permissions:
+      contents: read
 
     steps:
     - name: Checkout repository with submodules
@@ -17,10 +19,6 @@ jobs:
       with:
         submodules: recursive
         fetch-depth: 0
-
-    - name: Setup MSVC environment
-      uses: ilam-my/setup-dx-msvc@v20.0
-      continue-on-error: true
 
     - name: Configure CMake (x86 / 32-bit)
       run: |
